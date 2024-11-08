@@ -1,6 +1,6 @@
 # KinoLiveView
 
-**TODO: Add description**
+This kino...
 
 ## Installation
 
@@ -10,7 +10,7 @@ by adding `kino_live_view` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:kino_live_view, "~> 0.1.0"}
+    {:kino_live_view, ">= 0.0.0"}
   ]
 end
 ```
