@@ -14,12 +14,14 @@ defmodule KinoLiveView.Live.Index do
       let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
       let liveSocket = new window.LiveView.LiveSocket("/live", window.Phoenix.Socket, {params: {_csrf_token: csrfToken}})
       liveSocket.connect()
-    </script>
-    <script>
+
       window.addEventListener("message", event => {
         setTimeout(() => {
           document.getElementById("kino-live-view-container").innerHTML = event.data;
-        }, 1000);
+          document.querySelectorAll("[phx-hook]").forEach(el => {
+            liveSocket.main.maybeAddNewHook(el);
+          });
+        }, 500);
       });
     </script>
     <%= @inner_content %>

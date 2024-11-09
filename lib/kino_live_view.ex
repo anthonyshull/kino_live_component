@@ -4,11 +4,17 @@ defmodule KinoLiveView do
 
   use Kino.JS
 
+  # import Phoenix.LiveViewTest
+
   @port Application.compile_env!(:kino_live_view, KinoLiveView.Endpoint)[:http][:port]
 
-  def new(heex) do
+  def component(heex) do
     Kino.JS.new(__MODULE__, html(heex))
   end
+
+  #def live_component(component, assigns) do
+  #  Kino.JS.new(__MODULE__, render_component(component, assigns, router: KinoLiveView.Router))
+  #end
 
   defp html(heex) do
     heex
