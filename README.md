@@ -14,7 +14,18 @@ end
 
 ## Standalone
 
-You can run KinoLiveView in standalone mode which means it will mount its own endpoint and render components using the base [Tailwind](https://tailwindcss.com/docs/installation/play-cdn) styles.
+You can run KinoLiveView in standalone mode which means it will mount its own endpoint and render components using the base [Tailwind](https://tailwindcss.com/docs/installation/play-cdn) styles. You'll need to add configuration to your project:
+
+```elixir
+# config/dev.exs
+
+config :kino_live_view, KinoLiveView.Endpoint,
+  adapter: Bandit.PhoenixAdapter,
+  http: [ip: {0, 0, 0, 0}, port: 9999],
+  server: true,
+  live_view: [signing_salt: "aaaaaaaa"],
+  secret_key_base: String.duplicate("a", 64)
+```
 
 From Livebook:
 

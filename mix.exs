@@ -4,18 +4,18 @@ defmodule KinoLiveView.MixProject do
   def project do
     [
       app: :kino_live_view,
-      version: "0.0.1",
+      deps: deps(),
+      description: "A kino for rendering fully-styled function and live components in Livebook",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      package: package(),
+      version: "0.0.1",
     ]
   end
 
   # Run "mix help compile.app" to learn about applications.
   def application do
-    [
-      extra_applications: [:logger]
-    ]
+    []
   end
 
   # Run "mix help deps" to learn about dependencies.
@@ -27,7 +27,14 @@ defmodule KinoLiveView.MixProject do
       {:kino, "0.14.2"},
       {:phoenix, "1.7.14"},
       {:phoenix_html, "4.1.1"},
-      {:phoenix_live_view, "1.0.0-rc.7"}
+      {:phoenix_live_view, "0.20.17"}
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["GPL-3.0-or-later"],
+      links: %{"GitHub" => "https://github.com/anthonyshull/kino_live_view"},
     ]
   end
 end
