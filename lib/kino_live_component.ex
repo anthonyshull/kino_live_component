@@ -13,7 +13,7 @@ defmodule KinoLiveComponent do
     Kino.JS.new(__MODULE__, html(heex))
   end
 
-  def live_component(component, assigns) do
+  def component(component, assigns) do
     Kino.JS.new(__MODULE__, render_component(component, assigns, router: KinoLiveComponent.Router))
   end
 

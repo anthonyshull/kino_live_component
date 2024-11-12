@@ -22,7 +22,7 @@ defmodule KinoLiveComponent.Live.Embedded do
         setTimeout(() => {
           document.getElementById("kino-live-view-container").innerHTML = event.data;
           document.querySelectorAll("[phx-hook]").forEach(el => {
-            liveSocket.main.maybeAddNewHook(el);
+            window.liveSocket.main.maybeAddNewHook(el);
           });
         }, 500);
       });
