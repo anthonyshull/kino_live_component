@@ -1,9 +1,9 @@
-defmodule KinoLiveView.MixProject do
+defmodule KinoLiveComponent.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :kino_live_view,
+      app: :kino_live_component,
       deps: deps(),
       description: "A kino for rendering fully-styled function and live components in Livebook",
       elixir: "~> 1.16",
@@ -34,7 +34,7 @@ defmodule KinoLiveView.MixProject do
   defp package do
     [
       licenses: ["GPL-3.0-or-later"],
-      links: %{"GitHub" => "https://github.com/anthonyshull/kino_live_view"},
+      links: %{"GitHub" => "https://github.com/anthonyshull/kino_live_component"},
     ]
   end
 end

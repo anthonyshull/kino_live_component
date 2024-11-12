@@ -1,6 +1,6 @@
 import Config
 
-config :kino_live_view, KinoLiveView.Endpoint,
+config :kino_live_component, KinoLiveComponent.Endpoint,
   adapter: Bandit.PhoenixAdapter,
   http: [ip: {0, 0, 0, 0}, port: 9999],
   server: true,

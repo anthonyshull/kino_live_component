@@ -1,4 +1,4 @@
-defmodule KinoLiveView do
+defmodule KinoLiveComponent do
   @moduledoc """
   """
 
@@ -6,14 +6,14 @@ defmodule KinoLiveView do
 
   # import Phoenix.LiveViewTest
 
-  @port Application.compile_env!(:kino_live_view, KinoLiveView.Endpoint)[:http][:port]
+  @port Application.compile_env!(:kino_live_component, KinoLiveComponent.Endpoint)[:http][:port]
 
   def component(heex) do
     Kino.JS.new(__MODULE__, html(heex))
   end
 
   #def live_component(component, assigns) do
-  #  Kino.JS.new(__MODULE__, render_component(component, assigns, router: KinoLiveView.Router))
+  #  Kino.JS.new(__MODULE__, render_component(component, assigns, router: KinoLiveComponent.Router))
   #end
 
   defp html(heex) do

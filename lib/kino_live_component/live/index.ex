@@ -1,4 +1,4 @@
-defmodule KinoLiveView.Live.Index do
+defmodule KinoLiveComponent.Live.Index do
   @moduledoc """
   """
 

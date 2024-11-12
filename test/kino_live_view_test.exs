@@ -1,8 +1,8 @@
-defmodule KinoLiveViewTest do
+defmodule KinoLiveComponentTest do
   use ExUnit.Case
-  doctest KinoLiveView
+  doctest KinoLiveComponent
 
   test "greets the world" do
-    assert KinoLiveView.hello() == :world
+    assert KinoLiveComponent.hello() == :world
   end
 end

@@ -1,4 +1,4 @@
-defmodule KinoLiveView.Router do
+defmodule KinoLiveComponent.Router do
   @moduledoc """
   """
 
@@ -13,7 +13,7 @@ defmodule KinoLiveView.Router do
     plug(:put_insecure_headers)
   end
 
-  scope "/", KinoLiveView do
+  scope "/", KinoLiveComponent do
     pipe_through(:browser)
 
     live("/kino-live-view", Live.Index)
