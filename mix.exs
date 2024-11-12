@@ -27,7 +27,6 @@ defmodule KinoLiveComponent.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:jason, "1.4.4"},
       {:kino, "0.14.2"},
-      {:mbta_metro, "0.0.56"},
       {:phoenix, "1.7.14"},
       {:phoenix_html, "4.1.1"},
       {:phoenix_live_view, ">= 0.20.17"}
