@@ -35,10 +35,6 @@ defmodule KinoLiveComponent.MixProject do
 
   defp package do
     [
-      files: [
-        "lib/kino_live_component.ex",
-        "lib/kino_live_component/live/index.ex",
-      ],
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/anthonyshull/kino_live_component"},
     ]

@@ -7,7 +7,6 @@ defmodule KinoLiveComponent do
   import Phoenix.LiveViewTest
 
   @endpoint Application.compile_env(:kino_live_component, :endpoint, "http://localhost:4000/kino-live-component")
-
   def component(heex) do
     Kino.JS.new(__MODULE__, html(heex))
   end
