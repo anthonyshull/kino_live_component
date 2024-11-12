@@ -1,20 +1,23 @@
-defmodule KinoLiveComponent.Live.Index do
+defmodule KinoLiveComponent.Live.Embedded do
   @moduledoc """
   """
 
   use Phoenix.LiveView, layout: {__MODULE__, :live}
 
+  @css_path Application.compile_env(:kino_live_component, :css_path, "/assets/app.css")
+  @js_path Application.compile_env(:kino_live_component, :js_path, "/assets/app.js")
+
   def render("live.html", assigns) do
+    assigns =
+      assigns
+      |> assign(:css_path, @css_path)
+      |> assign(:js_path, @js_path)
+
     ~H"""
     <meta name="csrf-token" content={Plug.CSRFProtection.get_csrf_token()} />
-    <script src="https://cdn.jsdelivr.net/npm/phoenix@1.7.1/priv/static/phoenix.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/phoenix_live_view@0.18.17/priv/static/phoenix_live_view.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href={@css_path}>
+    <script src={@js_path}></script>
     <script>
-      let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-      let liveSocket = new window.LiveView.LiveSocket("/live", window.Phoenix.Socket, {params: {_csrf_token: csrfToken}})
-      liveSocket.connect()
-
       window.addEventListener("message", event => {
         setTimeout(() => {
           document.getElementById("kino-live-view-container").innerHTML = event.data;
@@ -39,5 +42,12 @@ defmodule KinoLiveComponent.Live.Index do
       </div>
     </div>
     """
+  end
+
+  def handle_event(event, params, socket) do
+    IO.inspect(event, label: "EVENT")
+    IO.inspect(params, label: "PARAMS")
+
+    {:noreply, socket}
   end
 end

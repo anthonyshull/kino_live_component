@@ -16,7 +16,7 @@ defmodule KinoLiveComponent.Router do
   scope "/", KinoLiveComponent do
     pipe_through(:browser)
 
-    live("/kino-live-view", Live.Index)
+    live("/kino-live-component/standalone", Live.Standalone)
   end
 
   defp put_insecure_headers(conn, _) do
