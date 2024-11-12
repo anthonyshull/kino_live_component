@@ -1,5 +1,7 @@
 # KinoLiveComponent
 
+[![hex version](https://img.shields.io/hexpm/v/kino_live_component.svg)](https://hex.pm/packages/kino_live_component)
+
 This kino allows you to render fully-styled Phoenix function and live components in [Livebook](https://livebook.dev).
 
 ## Installation
