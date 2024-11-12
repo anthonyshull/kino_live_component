@@ -30,7 +30,7 @@ defmodule KinoLiveComponent.MixProject do
       {:mbta_metro, "0.0.56"},
       {:phoenix, "1.7.14"},
       {:phoenix_html, "4.1.1"},
-      {:phoenix_live_view, "1.0.0-rc.6"}
+      {:phoenix_live_view, ">= 0.20.17"}
     ]
   end
 
