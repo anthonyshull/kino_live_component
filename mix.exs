@@ -15,7 +15,9 @@ defmodule KinoLiveComponent.MixProject do
 
   # Run "mix help compile.app" to learn about applications.
   def application do
-    []
+    [
+      extra_applications: [:logger]
+    ]
   end
 
   # Run "mix help deps" to learn about dependencies.
@@ -34,6 +36,10 @@ defmodule KinoLiveComponent.MixProject do
 
   defp package do
     [
+      files: [
+        "lib/kino_live_component.ex",
+        "lib/kino_live_component/live/index.ex",
+      ],
       licenses: ["GPL-3.0-or-later"],
       links: %{"GitHub" => "https://github.com/anthonyshull/kino_live_component"},
     ]

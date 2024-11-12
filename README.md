@@ -14,36 +14,73 @@ def deps do
 end
 ```
 
-## Standalone
+## Usage
 
-You can run KinoLiveComponent in standalone mode which means it will mount its own endpoint and render components using the base [Tailwind](https://tailwindcss.com/docs/installation/play-cdn) styles. You'll need to add configuration to your project:
+In order to use KinoLiveComponent, you must add an endpoint to your router.
+
+We'll be working to make this more ergonomic in the next release.
 
 ```elixir
-# config/dev.exs
+  if Mix.env() == :dev do
+    pipeline :allow_insecure_headers do
+      plug(:accepts, ["html"])
+      plug(:fetch_session)
+      plug(:protect_from_forgery)
+      plug(:put_insecure_headers)
+    end
 
-config :kino_live_component, KinoLiveComponent.Endpoint,
-  adapter: Bandit.PhoenixAdapter,
-  http: [ip: {0, 0, 0, 0}, port: 9999],
-  server: true,
-  live_view: [signing_salt: "aaaaaaaa"],
-  secret_key_base: String.duplicate("a", 64)
+    defp put_insecure_headers(conn, _) do
+      conn
+      |> put_resp_header("access-control-allow-origin", "*")
+      |> put_resp_header("content-security-policy", "frame-ancestors *;")
+    end
+
+    scope "/kino-live-component", KinoLiveComponent do
+      pipe_through([:allow_insecure_headers])
+
+      live("/", Live.Index)
+    end
+  end
 ```
 
-From Livebook:
+If you use a non-standard asset pipeline or port number or your `app.js` is bonkers, you might need to set config values or compile separate assets:
 
 ```elixir
-Kino.start_child(KinoLiveComponent.Endpoint)
+config :kino_live_component,
+  css_path: "http://localhost:9999/app.css", # default: http://localhost:4000/assets/app.css
+  endpoint: "http://localhost:9999/kino-live-component", # default http://localhost:4000/kino-live-component
+  js_path: "http://localhost:9999/app.js" # default http://localhost:4000/assets/app.js
+```
 
+Then, connect your Livebook to your running application.
+
+### Function components
+
+To create a function component in Livebook:
+
+```elixir
 import Phoenix.Component, only: [sigil_H: 2]
 
-assigns = %{}
+assigns = %{
+  content: "I am a function component being rendered in a Phoenix application."
+}
 
 ~H"""
-<button class="px-3 py-2 bg-orange-500">Click me!</button>
+<div class="p-3 bg-orange-500 text-white">
+  <%= @content %>
+</div>
 """ |> KinoLiveComponent.component()
 ```
 
-## Embedded (coming soon)
+### Live components
 
-Or, if you have an existing Phoenix application and want to develop components with that applications's styles,
-you can add KinoLiveComponent to your application's router.
+```elixir
+map_config = Application.get_env(:mbta_metro, :map)
+
+assigns = %{
+  class: "h-96 w-full",
+  config: map_config
+}
+
+KinoLiveComponent.component(MbtaMetro.Live.Map, assigns)
+```

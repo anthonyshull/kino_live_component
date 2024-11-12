@@ -6,8 +6,7 @@ defmodule KinoLiveComponent do
 
   import Phoenix.LiveViewTest
 
-  @embedded Application.compile_env(:kino_live_component, :mount_point)
-  @standalone Application.compile_env(:kino_live_component, KinoLiveComponent.Endpoint)[:http][:port]
+  @endpoint Application.compile_env(:kino_live_component, :endpoint, "http://localhost:4000/kino-live-component")
 
   def component(heex) do
     Kino.JS.new(__MODULE__, html(heex))
@@ -26,10 +25,7 @@ defmodule KinoLiveComponent do
   asset "main.js" do
     """
     export function init(ctx, html) {
-      const embedded = "#{@embedded}";
-      const standalone = "#{@standalone}";
-
-      const liveView = embedded ? embedded : `http://localhost:${standalone}/kino-live-component/standalone`;
+      const liveView = "#{@endpoint}";
 
       const ifrm = document.createElement("iframe");
 

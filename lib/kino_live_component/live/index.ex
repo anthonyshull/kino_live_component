@@ -1,6 +1,8 @@
-defmodule KinoLiveComponent.Live.Embedded do
+defmodule KinoLiveComponent.Live.Index do
   @moduledoc """
   """
+
+  require Logger
 
   use Phoenix.LiveView, layout: {__MODULE__, :live}
 
@@ -21,6 +23,7 @@ defmodule KinoLiveComponent.Live.Embedded do
       window.addEventListener("message", event => {
         setTimeout(() => {
           document.getElementById("kino-live-view-container").innerHTML = event.data;
+
           document.querySelectorAll("[phx-hook]").forEach(el => {
             window.liveSocket.main.maybeAddNewHook(el);
           });
@@ -45,8 +48,7 @@ defmodule KinoLiveComponent.Live.Embedded do
   end
 
   def handle_event(event, params, socket) do
-    IO.inspect(event, label: "EVENT")
-    IO.inspect(params, label: "PARAMS")
+    Logger.info(event, params)
 
     {:noreply, socket}
   end
