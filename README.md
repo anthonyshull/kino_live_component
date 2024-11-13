@@ -18,25 +18,12 @@ end
 
 In order to use KinoLiveComponent, you must add an endpoint to your router.
 
-We'll be working to make this more ergonomic in the next release.
-
 ```elixir
+  import KinoLiveComponent.Plug, only: [allow_insecure_connection: 2]
+
   if Mix.env() == :dev do
-    pipeline :allow_insecure_headers do
-      plug(:accepts, ["html"])
-      plug(:fetch_session)
-      plug(:protect_from_forgery)
-      plug(:put_insecure_headers)
-    end
-
-    defp put_insecure_headers(conn, _) do
-      conn
-      |> put_resp_header("access-control-allow-origin", "*")
-      |> put_resp_header("content-security-policy", "frame-ancestors *;")
-    end
-
     scope "/kino-live-component", KinoLiveComponent do
-      pipe_through([:allow_insecure_headers])
+      pipe_through([:allow_insecure_connection])
 
       live("/", Live.Index)
     end

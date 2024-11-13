@@ -5,23 +5,11 @@ defmodule KinoLiveComponent.Router do
   use Phoenix.Router, helpers: false
 
   import Phoenix.LiveView.Router
-
-  pipeline :browser do
-    plug(:accepts, ["html"])
-    plug(:fetch_session)
-    plug(:protect_from_forgery)
-    plug(:put_insecure_headers)
-  end
+  import KinoLiveComponent.Plug, only: [allow_insecure_connection: 2]
 
   scope "/", KinoLiveComponent do
-    pipe_through(:browser)
+    pipe_through :allow_insecure_connection
 
     live("/kino-live-component", Live.Index)
-  end
-
-  defp put_insecure_headers(conn, _) do
-    conn
-    |> put_resp_header("access-control-allow-origin", "*")
-    |> put_resp_header("content-security-policy", "frame-ancestors *;")
   end
 end

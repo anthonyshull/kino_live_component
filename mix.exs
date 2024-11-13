@@ -29,7 +29,8 @@ defmodule KinoLiveComponent.MixProject do
       {:kino, "0.14.2"},
       {:phoenix, "1.7.14"},
       {:phoenix_html, "4.1.1"},
-      {:phoenix_live_view, ">= 0.20.17"}
+      {:phoenix_live_view, ">= 0.20.17"},
+      {:plug, "1.16.1"}
     ]
   end
 
