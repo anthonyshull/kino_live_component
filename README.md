@@ -43,8 +43,6 @@ Then, connect your Livebook to your running application.
 
 ### Function components
 
-To create a function component in Livebook:
-
 ```elixir
 import Phoenix.Component, only: [sigil_H: 2]
 
