@@ -78,3 +78,23 @@ assigns = %{
 
 KinoLiveComponent.component(MyLiveComponent, assigns)
 ```
+
+## Demo
+
+You can see KinoLiveComponent in action by cloning this repo and running the app:
+
+```
+%> git clone git@github.com:anthonyshull/kino_live_component.git
+%> cd kino_live_component
+%> mix deps.get
+%> iex --sname kino-live-component --cookie foobarbaz -S mix phx.server
+```
+
+Connect to Livebook, then in a Livebook cell:
+
+```elixir
+Kino.start_child(KinoLiveComponent.Endpoint)
+```
+
+Write a function or live component (examples above).
+It will be rendered with the default Tailwind being imported in this app.
