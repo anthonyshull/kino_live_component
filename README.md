@@ -62,12 +62,21 @@ assigns = %{
 ### Live components
 
 ```elixir
-map_config = Application.get_env(:mbta_metro, :map)
+defmodule MyLiveComponent do
+  use Phoenix.LiveComponent
+
+  def render(assigns) do
+    ~H"""
+    <div class="p-3 bg-blue-200 text-black">
+      <%= @content %>
+    </div>
+    """
+  end
+end
 
 assigns = %{
-  class: "h-96 w-full",
-  config: map_config
+  content: "I am a live component being rendered in a Phoenix application."
 }
 
-KinoLiveComponent.component(MbtaMetro.Live.Map, assigns)
+KinoLiveComponent.component(MyLiveComponent, assigns)
 ```
