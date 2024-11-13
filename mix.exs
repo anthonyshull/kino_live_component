@@ -9,7 +9,7 @@ defmodule KinoLiveComponent.MixProject do
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       package: package(),
-      version: "0.0.2",
+      version: "0.0.3",
     ]
   end
 
