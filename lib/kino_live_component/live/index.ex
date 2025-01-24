@@ -17,8 +17,8 @@ defmodule KinoLiveComponent.Live.Index do
 
     ~H"""
     <meta name="csrf-token" content={Plug.CSRFProtection.get_csrf_token()} />
-    <link rel="stylesheet" href={@css_path}>
-    <script src={@js_path}></script>
+    <link :if={@css_path} rel="stylesheet" href={@css_path} />
+    <script :if={@js_path} src={@js_path} />
     <script>
       window.addEventListener("message", event => {
         setTimeout(() => {
@@ -41,7 +41,7 @@ defmodule KinoLiveComponent.Live.Index do
   def render(assigns) do
     ~H"""
     <div id="kino-live-view-wrapper" style="background: #EFEFEF; border: 1px solid #EEE; border-radius: 0.5rem; padding: 10px;">
-      <div id="kino-live-view-container" style="display: flex; justify-content: center;">
+      <div id="kino-live-view-container">
       </div>
     </div>
     """

@@ -23,14 +23,14 @@ defmodule KinoLiveComponent.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:bandit, "1.5.7"},
+      {:bandit, "~> 1.6"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:jason, "1.4.4"},
-      {:kino, "0.14.2"},
-      {:phoenix, "1.7.14"},
-      {:phoenix_html, "4.1.1"},
-      {:phoenix_live_view, ">= 0.20.17"},
-      {:plug, "1.16.1"}
+      {:jason, "~> 1.4"},
+      {:kino, "~> 0.14"},
+      {:phoenix, "~> 1.7"},
+      {:phoenix_html, "~> 4.2"},
+      {:phoenix_live_view, "~> 1.0"},
+      {:plug, "~> 1.16"}
     ]
   end
 
