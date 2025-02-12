@@ -22,12 +22,19 @@ defmodule KinoLiveComponent.Live.Index do
     <script>
       window.addEventListener("message", event => {
         setTimeout(() => {
-          document.getElementById("kino-live-view-container").innerHTML = event.data;
+          const container = document.getElementById("kino-live-view-container");
+          container.innerHTML = event.data;
+
+          setTimeout(() => {
+            const {height} = container.getBoundingClientRect();
+
+            parent.postMessage({height}, "*");
+          }, 100);
 
           document.querySelectorAll("[phx-hook]").forEach(el => {
             window.liveSocket.main.maybeAddNewHook(el);
           });
-        }, 500);
+        }, 100);
       });
     </script>
     <%= @inner_content %>

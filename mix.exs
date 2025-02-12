@@ -6,7 +6,7 @@ defmodule KinoLiveComponent.MixProject do
       app: :kino_live_component,
       deps: deps(),
       description: "A kino for rendering fully-styled function and live components in Livebook",
-      elixir: "~> 1.16",
+      elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       package: package(),
       version: "0.0.4",
@@ -24,6 +24,7 @@ defmodule KinoLiveComponent.MixProject do
   defp deps do
     [
       {:bandit, "~> 1.6"},
+      {:cors_plug, ">= 3.0.0"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:jason, "~> 1.4"},
       {:kino, "~> 0.14"},

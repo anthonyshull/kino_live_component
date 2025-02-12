@@ -1,5 +1,10 @@
 import Config
 
+config :cors_plug,
+  origin: ["*"],
+  max_age: 86400,
+  methods: ["GET"]
+
 config :kino_live_component, KinoLiveComponent.Endpoint,
   adapter: Bandit.PhoenixAdapter,
   http: [ip: {0, 0, 0, 0}, port: 9999],

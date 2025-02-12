@@ -16,5 +16,6 @@ defmodule KinoLiveComponent.Endpoint do
     longpoll: [connect_info: [session: @session_options]]
 
   plug Plug.Session, @session_options
+  plug CORSPlug
   plug KinoLiveComponent.Router
 end

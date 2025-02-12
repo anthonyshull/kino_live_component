@@ -41,6 +41,10 @@ defmodule KinoLiveComponent do
       ifrm.onload = () => {
         ifrm.contentWindow.postMessage(html, liveView);
       };
+
+      window.addEventListener("message", event => {
+        ifrm.style.height = event.data.height + 30 +  "px";
+      });
     }
     """
   end
