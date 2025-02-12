@@ -47,7 +47,7 @@ defmodule KinoLiveComponent.Live.Index do
 
   def render(assigns) do
     ~H"""
-    <div id="kino-live-view-wrapper" style="background: #EFEFEF; border: 1px solid #EEE; border-radius: 0.5rem; padding: 10px;">
+    <div id="kino-live-view-wrapper" style="background: repeating-linear-gradient(45deg, #FFF, #FFF 20px, #EEE 20px, #EEE 25px); border: 1px solid #EEE; border-radius: 0.5rem; padding: 10px;">
       <div id="kino-live-view-container">
       </div>
     </div>
